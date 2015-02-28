@@ -1,6 +1,6 @@
 <html>
 	<head>
-		<title>Laravel</title>
+		<title>Elementary</title>
 		
 		<link href='//fonts.googleapis.com/css?family=Lato:100' rel='stylesheet' type='text/css'>
 
@@ -14,6 +14,7 @@
 				display: table;
 				font-weight: 100;
 				font-family: 'Lato';
+				background-color: #474747;
 			}
 
 			.container {
@@ -40,7 +41,7 @@
 	<body>
 		<div class="container">
 			<div class="content">
-				<div class="title">Laravel 5</div>
+				<div class="title">Elementary 2016</div>
 				<div class="quote">{{ Inspiring::quote() }}</div>
 			</div>
 		</div>
