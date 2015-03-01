@@ -18,9 +18,11 @@ class CreateUsersTable extends Migration {
 			$table->string('name');
 			$table->string('email')->unique();
 			$table->string('token')->nullable();
+			$table->string('institution')->default('JGEC');
 			$table->string('password', 60);
 			$table->rememberToken();
 			$table->timestamps();
+			$table->datetime('last_login')->nullable();
 		});
 	}
 
