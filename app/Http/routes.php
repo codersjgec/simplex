@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('/', 'WelcomeController@index');
+Route::get('/', 'ElementaryController@index');
 
 Route::get('login', array('as' => 'login', 'uses' => 'UserController@login'));
 
@@ -25,5 +25,6 @@ Route::get('forgotpassword', array('as' => 'forgotpassword', 'uses' => 'UserCont
 
 Route::get('profile', array('as' => 'profile', 'uses' => 'UserController@profile'));
 
-Route::get('gameon', array('as' => 'gameon', 'uses' => 'UserController@gameon'));
+Route::get('gameon', array('as' => 'gameon', 'uses' => 'ElementaryController@gameon'));
 
+Route::get('admin', 'AdminController@dashboard');

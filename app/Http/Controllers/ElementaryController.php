@@ -1,6 +1,8 @@
 <?php namespace App\Http\Controllers;
 
-class WelcomeController extends Controller {
+use App\User, Request, Hash, Mail, Carbon\Carbon, Session;
+
+class ElementaryController extends Controller {
 
 	/*
 	|--------------------------------------------------------------------------
@@ -30,7 +32,17 @@ class WelcomeController extends Controller {
 	 */
 	public function index()
 	{
-		return view('welcome');
+		if(Session::has('user_id')){
+			return redirect('gameon');
+		}else{
+			return view('welcome');
+		}
+	}
+
+	public function gameon()
+	{
+		$users = User::find(Session::get('user_id'));
+		return view('profile')->with('user',$users)->with('title','Profile');
 	}
 
 }

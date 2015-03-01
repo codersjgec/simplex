@@ -1,11 +1,6 @@
 <?php namespace App\Http\Controllers;
 
-use App\User;
-use Request;
-use Hash;
-use Mail;
-use Carbon\Carbon;
-use Session;
+use App\User, Request, Hash, Mail, Carbon\Carbon, Session;
 
 class UserController extends Controller {
 
@@ -82,7 +77,14 @@ class UserController extends Controller {
 				$users->last_login = Carbon::now();
 				$users->save();
 				Session::put('user_id',$users->id);
-				return redirect('gameon')->with('user',$users)->with('title','Title for level0');
+				$gs = GameStatus::where('user_id',$users->id)->first();
+				if($gs==NULL){
+					$gs = new GameStatus;
+					$gs->user_id = $users->id;
+					$gs->level = 1;
+					$gs->save();
+				}
+				return redirect('gameon');
 			}else{
 				\Session::flash('flash_message','Incorrect Password');
 				return redirect('login');
@@ -94,12 +96,6 @@ class UserController extends Controller {
 	}
 
 	public function profile()
-	{
-		$users = User::find(Session::get('user_id'));
-		return view('profile')->with('user',$users)->with('title','Profile');
-	}
-
-	public function gameon()
 	{
 		$users = User::find(Session::get('user_id'));
 		return view('profile')->with('user',$users)->with('title','Profile');
