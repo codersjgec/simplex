@@ -15,7 +15,7 @@ Route::get('/', 'WelcomeController@index');
 
 Route::get('login', array('as' => 'login', 'uses' => 'UserController@login'));
 
-Route::post('gameon', array('as' => 'gameon', 'uses' => 'UserController@gameon'));
+Route::post('usersignin', array('as' => 'usersignin', 'uses' => 'UserController@usersignin'));
 
 Route::get('register', array('as' => 'register', 'uses' => 'UserController@register'));
 
@@ -23,5 +23,7 @@ Route::post('usersignup', array('as' => 'usersignup', 'uses' => 'UserController@
 
 Route::get('forgotpassword', array('as' => 'forgotpassword', 'uses' => 'UserController@forgotpassword'));
 
-Route::get('user/profile', array('as' => 'userprofile', 'uses' => 'UserController@profile'));
+Route::get('profile', array('as' => 'profile', 'uses' => 'UserController@profile'));
+
+Route::get('gameon', array('as' => 'gameon', 'uses' => 'UserController@gameon'));
 

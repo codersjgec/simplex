@@ -9,7 +9,7 @@
 		        {{ $alert }}
 		    </div>
 		@endif
-		{!! Form::open(['route'=>'gameon']) !!}
+		{!! Form::open(['route'=>'usersignin']) !!}
 			<div class="form-group">
 				{!! Form::text('username',null,['class'=>'form-control','placeholder'=>'Your registered email id as username']) !!}
 			</div>

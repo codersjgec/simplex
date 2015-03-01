@@ -5,6 +5,7 @@ use Request;
 use Hash;
 use Mail;
 use Carbon\Carbon;
+use Session;
 
 class UserController extends Controller {
 
@@ -69,7 +70,7 @@ class UserController extends Controller {
 		return redirect('login');
 	}
 
-	public function gameon()
+	public function usersignin()
 	{
 		$email = Request::get('username');
 		$password = Request::get('password');
@@ -80,7 +81,8 @@ class UserController extends Controller {
 				// check his level status
 				$users->last_login = Carbon::now();
 				$users->save();
-				return redirect('user/profile');
+				Session::put('user_id',$users->id);
+				return redirect('gameon')->with('user',$users)->with('title','Title for level0');
 			}else{
 				\Session::flash('flash_message','Incorrect Password');
 				return redirect('login');
@@ -93,7 +95,14 @@ class UserController extends Controller {
 
 	public function profile()
 	{
-		return view('user.profile');
+		$users = User::find(Session::get('user_id'));
+		return view('profile')->with('user',$users)->with('title','Profile');
+	}
+
+	public function gameon()
+	{
+		$users = User::find(Session::get('user_id'));
+		return view('profile')->with('user',$users)->with('title','Profile');
 	}
 
 
