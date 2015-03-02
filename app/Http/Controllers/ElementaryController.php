@@ -42,7 +42,7 @@ class ElementaryController extends Controller {
 	public function gameon()
 	{
 		$users = User::find(Session::get('user_id'));
-		return view('profile')->with('user',$users)->with('title','Profile');
+		return view('gameon')->with('user',$users)->with('title','Gameon')->with('clues','Now that is testing');
 	}
 
 }

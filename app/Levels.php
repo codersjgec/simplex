@@ -2,8 +2,8 @@
 
 use Illuminate\Database\Eloquent\Model;
 
-class GameStatus extends Model{
+class Levels extends Model{
 
-	protected $table = 'gamestatus';
+	protected $table = 'levels';
 
 }

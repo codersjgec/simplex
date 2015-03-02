@@ -1,6 +1,6 @@
 <?php namespace App\Http\Controllers;
 
-use App\User, Request, Hash, Mail, Carbon\Carbon, Session;
+use App\User, App\GameStatus, Request, Hash, Mail, Carbon\Carbon, Session;
 
 class UserController extends Controller {
 
@@ -84,6 +84,7 @@ class UserController extends Controller {
 					$gs->level = 1;
 					$gs->save();
 				}
+				// if level last then go to congrats page.
 				return redirect('gameon');
 			}else{
 				\Session::flash('flash_message','Incorrect Password');

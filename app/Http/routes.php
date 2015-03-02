@@ -27,4 +27,9 @@ Route::get('profile', array('as' => 'profile', 'uses' => 'UserController@profile
 
 Route::get('gameon', array('as' => 'gameon', 'uses' => 'ElementaryController@gameon'));
 
-Route::get('admin', 'AdminController@dashboard');
+Route::get('admin', array('as' => 'admin', 'uses' => 'AdminController@dashboard'));
+
+Route::get('adminlevel', array('as' => 'adminlevel', 'uses' => 'AdminController@levels'));
+
+Route::post('levelcreate', array('as' => 'levelcreate', 'uses' => 'AdminController@levelcreate'));
+
