@@ -44,6 +44,13 @@ class AdminController extends Controller {
 		return redirect('adminlevel');
 	}
 
+	public function users()
+	{
+		$user_count = User::count();
+		$users = User::all();
+		
+		return view('admin.users')->with('title','Users')->with('user_count',$user_count)->with('users',$users);
+	}
 
 
 }

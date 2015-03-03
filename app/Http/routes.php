@@ -33,3 +33,4 @@ Route::get('adminlevel', array('as' => 'adminlevel', 'uses' => 'AdminController@
 
 Route::post('levelcreate', array('as' => 'levelcreate', 'uses' => 'AdminController@levelcreate'));
 
+Route::get('users', array('as' => 'users', 'uses' => 'AdminController@users'));

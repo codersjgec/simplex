@@ -58,6 +58,9 @@
                     <li>
                         <a href="{{route('adminlevel')}}"><i class="fa fa-fw fa-desktop"></i> Level Control</a>
                     </li>
+                    <li>
+                        <a href="{{route('users')}}"><i class="fa fa-fw fa-users"></i> Users</a>
+                    </li>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
