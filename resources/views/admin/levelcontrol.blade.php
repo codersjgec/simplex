@@ -9,7 +9,7 @@
         </h1>
         <ol class="breadcrumb">
             <li>
-                <i class="fa fa-dashboard"></i>  <a href="index.html">Dashboard</a>
+                <i class="fa fa-dashboard"></i>  <a href="{{route('admin')}}">Dashboard</a>
             </li>
             <li class="active">
                 <i class="fa fa-edit"></i> Level Control
@@ -21,17 +21,11 @@
 
 <div class="row">
     <div class="col-lg-6">
-        <?php if($level_last ==0){ ?>
-            <p>No Level Created yet</p>
-        <?php }else{ ?>
-            @foreach ($levels as $level)
-                {{$level->id}}
-            @endforeach
-        <?php } ?>
+        <h2>Total Levels Created : {{$level_last}}</h2>
     </div>
     <div class="col-lg-6">
         <h1>Add Level {{$level_last + 1}}</h1>
-        {!! Form::open(['route'=>'levelcreate']) !!}
+        {!! Form::open(['route'=>'levelcreate','enctype'=>'multipart/form-data']) !!}
             <div class="form-group">
                 {!! Form::text('title',null,['class'=>'form-control','placeholder'=>'Title Clue']) !!}
             </div>
@@ -39,7 +33,7 @@
                 {!! Form::textarea('body',null,['class'=>'form-control','placeholder'=>'Source Code Clue']) !!}
             </div>
             <div class="form-group">
-                {!! Form::file('picture') !!}
+                {!! Form::file('picture',['class'=>'form-control']) !!}
             </div>
             <div class="form-group">
                 {!! Form::submit('Create Level',['class'=>'btn btn-primary form-control']) !!}
