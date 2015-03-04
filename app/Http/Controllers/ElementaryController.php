@@ -1,6 +1,6 @@
 <?php namespace App\Http\Controllers;
 
-use App\User, Request, Hash, Mail, Carbon\Carbon, Session;
+use App\User, App\Levels, App\GameStatus, Request, Hash, Mail, Carbon\Carbon, Session;
 
 class ElementaryController extends Controller {
 
@@ -42,7 +42,9 @@ class ElementaryController extends Controller {
 	public function gameon()
 	{
 		$users = User::find(Session::get('user_id'));
-		return view('gameon')->with('user',$users)->with('title','Gameon')->with('clues','Now that is testing');
+		$gamestatus = GameStatus::where('user_id',Session::get('user_id'))->first();
+		$levels = Levels::where('id',$gamestatus->level)->first();
+		return view('gameon')->with('user',$users)->with('levels',$levels);
 	}
 
 }
